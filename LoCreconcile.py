@@ -31,6 +31,8 @@ query_types = [{'id': item['id'], 'name': item['name']} for item in refine_to_lc
 
 metadata = {
     "name": "LC Reconciliation Service",
+    "identifierSpace" : "http://localhost/identifier",
+    "schemaSpace" : "http://localhost/schema",
     "defaultTypes": query_types,
     "view": {
         "url": "{{id}}"
