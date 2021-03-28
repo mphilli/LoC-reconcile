@@ -111,7 +111,7 @@ class SearchLoC:
         id_pairs = []
         for r in results:
             heading = re.search("\">(.+)</a></td>", r).group(1)
-            term_id = re.search("<td><a href=\"/authorities" + self.term_type + "/(.+)\">", r).group(1)
+            term_id = re.search("<td><a href=\"/authorities" + self.term_type + "/([^\"]+)\"[^>]*>", r).group(1)
             term_id = self.get_term_uri(term_id)
             if term_id and heading:
                 id_pairs.append((heading, term_id))
