@@ -46,8 +46,8 @@ class SearchLoC:
     def __init__(self, term, term_type=''):
         self._term_type = term_type
         self.term = term
-        self.suggest_uri = "http://id.loc.gov/authorities" + self.term_type + "/suggest/?q="
-        self.__raw_uri_start = "http://id.loc.gov/search/?q="
+        self.suggest_uri = "https://id.loc.gov/authorities" + self.term_type + "/suggest/?q="
+        self.__raw_uri_start = "https://id.loc.gov/search/?q="
         self.__raw_uri_end = "&q=cs%3Ahttp%3A%2F%2Fid.loc.gov%2Fauthorities%2F" + self.term_type[1:]
 
     def __str__(self):
@@ -90,7 +90,7 @@ class SearchLoC:
         return id_pairs
 
     def did_you_mean(self):
-        dym_base = "http://id.loc.gov/authorities" + self.term_type + "/didyoumean/?label="
+        dym_base = "https://id.loc.gov/authorities" + self.term_type + "/didyoumean/?label="
         dym_url = dym_base + quote(self.term)
         self.LOGGER.debug("querying didyoumean with URL {}".format(str(dym_url)))
         response = requests.get(dym_url)
@@ -103,14 +103,14 @@ class SearchLoC:
         search_uri = self.__raw_uri_start + quote(self.term) + self.__raw_uri_end
         response = requests.get(search_uri)
         parser = bSoup(response.text, 'html.parser')
-        pattern = re.compile("<td><a href=\"/authorities" + self.term_type + ".+</a></td>")
+        pattern = re.compile("<td><a href=\"/authorities" + self.term_type + ".+</a>")
         search_results = re.findall(pattern, str(parser))
         return self.__process_results_raw(search_results)
 
     def __process_results_raw(self, results):
         id_pairs = []
         for r in results:
-            heading = re.search("\">(.+)</a></td>", r).group(1)
+            heading = re.search("\">(.+)</a>", r).group(1)
             term_id = re.search("<td><a href=\"/authorities" + self.term_type + "/(.+)\">", r).group(1)
             term_id = self.get_term_uri(term_id)
             if term_id and heading:
@@ -132,7 +132,7 @@ class SearchLoC:
 
     def get_term_uri(self, term_id, extension="html", include_ext=False):
         """return the URI of a term term, given the ID of the term"""
-        term_uri = "http://id.loc.gov/authorities" + self.term_type + "/" + term_id
+        term_uri = "https://id.loc.gov/authorities" + self.term_type + "/" + term_id
         if include_ext:
             return term_uri + "." + extension
         return term_uri

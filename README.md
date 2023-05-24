@@ -1,5 +1,9 @@
 ### Library of Congress Reconciliation Service for OpenRefine
 
+This repository is a fork of the original at: https://github.com/mphilli/LoC-reconcile
+
+This version seeks to fix some issues that have recently broken with the original code.
+
 The following is a web service that interacts with the [OpenRefine Reconciliation Service API](https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation-Service-API)
 to [reconcile](https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation) names from the Library of Congress Name Authority File ([LCNAF](http://id.loc.gov/authorities/names.html)) and
 subjects from the Library of Congress Subject Headings ([LCSH](http://id.loc.gov/authorities/subjects.html)).
