@@ -1,9 +1,8 @@
-import re
 import requests
 import difflib
 from urllib.parse import quote
 from lxml import etree
-from bs4 import BeautifulSoup as bSoup
+from bs4 import BeautifulSoup
 import logging
 
 
@@ -102,16 +101,16 @@ class SearchLoC:
         self.LOGGER.debug("Web scraping page 1 of web results...".format(self.term))
         search_uri = self.__raw_uri_start + quote(self.term) + self.__raw_uri_end
         response = requests.get(search_uri)
-        parser = bSoup(response.text, 'html.parser')
-        pattern = re.compile("<td><a href=\"/authorities" + self.term_type + ".+</a>")
-        search_results = re.findall(pattern, str(parser))
+        soup = BeautifulSoup(response.text, 'html.parser')
+        search_results = soup.find_all('a', title="Click to view record")
         return self.__process_results_raw(search_results)
 
     def __process_results_raw(self, results):
         id_pairs = []
         for r in results:
-            heading = re.search("\">(.+)</a>", r).group(1)
-            term_id = re.search("<td><a href=\"/authorities" + self.term_type + "/(.+)\">", r).group(1)
+            term_id_link = r.get('href').split('/')
+            term_id = term_id_link[len(term_id_link)-1]
+            heading = r.get_text()
             term_id = self.get_term_uri(term_id)
             if term_id and heading:
                 id_pairs.append((heading, term_id))
