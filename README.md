@@ -4,7 +4,7 @@ This repository is a fork of the original at: https://github.com/mphilli/LoC-rec
 
 This version seeks to fix some issues that have recently broken with the original code.
 
-Download an executable Windows 11 version from the [Releases](Releases) page.
+Download an executable Windows 11 version from the [Releases](https://github.com/Smithsonian/LoC-reconcile/releases) page.
 
 ### Original Readme:
 
@@ -28,7 +28,7 @@ The reconciliation score, which indicates how good the match is, is determined u
 
 ### Installation
 
-For Windows 11, download an executable file from the [Releases](Releases) page.
+For Windows 11, download an executable file from the [Releases](https://github.com/Smithsonian/LoC-reconcile/releases) page.
 
 #### Run using Python
 
