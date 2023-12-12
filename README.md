@@ -4,6 +4,10 @@ This repository is a fork of the original at: https://github.com/mphilli/LoC-rec
 
 This version seeks to fix some issues that have recently broken with the original code.
 
+Download an executable Windows 11 version from the [Releases](Releases) page.
+
+### Original Readme:
+
 The following is a web service that interacts with the [OpenRefine Reconciliation Service API](https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation-Service-API)
 to [reconcile](https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation) names from the Library of Congress Name Authority File ([LCNAF](http://id.loc.gov/authorities/names.html)) and
 subjects from the Library of Congress Subject Headings ([LCSH](http://id.loc.gov/authorities/subjects.html)).
@@ -23,6 +27,10 @@ name or subject.
 The reconciliation score, which indicates how good the match is, is determined using the Python [difflib](https://docs.python.org/3/library/difflib.html) library.
 
 ### Installation
+
+For Windows 11, download an executable file from the [Releases](Releases) page.
+
+#### Run using Python
 
 * Ensure Python 3 is installed. This version was tested with Python 3.6.8.
 * Download this repository locally (`git clone` or `.zip`)
