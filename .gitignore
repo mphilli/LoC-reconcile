@@ -1,2 +1,8 @@
 .idea
 __pycache__/
+*.code-workspace
+__init__.py
+venv
+dist
+build
+*.spec
